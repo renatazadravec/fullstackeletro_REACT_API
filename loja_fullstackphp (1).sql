@@ -1,31 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 5.0.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 04-Dez-2020 às 22:17
--- Versão do servidor: 10.4.14-MariaDB
--- versão do PHP: 7.4.11
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `loja_fullstackphp`
---
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `contato`
---
 
 CREATE TABLE `contato` (
   `id` int(5) NOT NULL,
@@ -33,9 +10,7 @@ CREATE TABLE `contato` (
   `mensagem` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Extraindo dados da tabela `contato`
---
 
 INSERT INTO `contato` (`id`, `nome`, `mensagem`) VALUES
 (9, '', ''),
@@ -44,11 +19,7 @@ INSERT INTO `contato` (`id`, `nome`, `mensagem`) VALUES
 (12, '', ''),
 (13, '', '');
 
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `pedidos`
---
 
 CREATE TABLE `pedidos` (
   `id` int(5) NOT NULL,
@@ -61,18 +32,12 @@ CREATE TABLE `pedidos` (
   `valor_total` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Extraindo dados da tabela `pedidos`
---
 
 INSERT INTO `pedidos` (`id`, `nome_cliente`, `endereco`, `telefone`, `nome_do_produto`, `valor_unitario`, `quantidade`, `valor_total`) VALUES
 (7, 'Renata', 'Jose Jorge Salum', '11945123482', 'RENATA DA SILVA SANTOS', 'R$ 10,00', 3, 'R$ 30,00');
 
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `produtos`
---
 
 CREATE TABLE `produtos` (
   `id` int(5) NOT NULL,
@@ -84,9 +49,7 @@ CREATE TABLE `produtos` (
   `imagem` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Extraindo dados da tabela `produtos`
---
 
 INSERT INTO `produtos` (`id`, `categoria`, `nome`, `descricao`, `preco`, `preco_promocao`, `imagem`) VALUES
 (1, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '9389.00', '5019.00', 'geladeira.jpg'),
@@ -106,51 +69,38 @@ INSERT INTO `produtos` (`id`, `categoria`, `nome`, `descricao`, `preco`, `preco_
 (15, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
 (16, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg');
 
---
 -- Índices para tabelas despejadas
---
 
---
 -- Índices para tabela `contato`
---
+
 ALTER TABLE `contato`
   ADD PRIMARY KEY (`id`);
 
---
 -- Índices para tabela `pedidos`
---
+
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id`);
 
---
 -- Índices para tabela `produtos`
---
+
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
---
 -- AUTO_INCREMENT de tabelas despejadas
---
 
---
 -- AUTO_INCREMENT de tabela `contato`
---
+
 ALTER TABLE `contato`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
---
 -- AUTO_INCREMENT de tabela `pedidos`
---
+
 ALTER TABLE `pedidos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
 -- AUTO_INCREMENT de tabela `produtos`
---
+
 ALTER TABLE `produtos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
