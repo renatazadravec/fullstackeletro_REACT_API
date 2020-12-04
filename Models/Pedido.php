@@ -8,7 +8,7 @@ class Pedido
     public $nome_cliente;
     public $endereco;
     public $telefone;
-    public $nome_do_produto;
+    public $id_produto;
     public $valor_unitario;
     public $quantidade;
     public $valor_total;
@@ -21,7 +21,7 @@ class Pedido
             nome_cliente,
             endereco,
             telefone,
-            nome_do_produto,
+            id_produto,
             valor_unitario,
             quantidade,
             valor_total
@@ -29,7 +29,7 @@ class Pedido
             '$this->nome_cliente',
             '$this->endereco',
             '$this->telefone',
-            '$this->nome_do_produto',
+            '$this->id_produto',
             '$this->valor_unitario',
             '$this->quantidade',
             '$this->valor_total')

@@ -1,8 +1,11 @@
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
--- Estrutura da tabela `contato`
+-- Banco de dados: `loja_fullstackphp`
+
 
 CREATE TABLE `contato` (
   `id` int(5) NOT NULL,
@@ -10,7 +13,9 @@ CREATE TABLE `contato` (
   `mensagem` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
 -- Extraindo dados da tabela `contato`
+--
 
 INSERT INTO `contato` (`id`, `nome`, `mensagem`) VALUES
 (9, '', ''),
@@ -26,18 +31,22 @@ CREATE TABLE `pedidos` (
   `nome_cliente` varchar(100) DEFAULT NULL,
   `endereco` varchar(200) DEFAULT NULL,
   `telefone` varchar(100) DEFAULT NULL,
-  `nome_do_produto` varchar(100) DEFAULT NULL,
+  `id_produto` int(5) DEFAULT NULL,
   `valor_unitario` varchar(100) DEFAULT NULL,
   `quantidade` int(5) DEFAULT NULL,
   `valor_total` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
 -- Extraindo dados da tabela `pedidos`
+--
 
-INSERT INTO `pedidos` (`id`, `nome_cliente`, `endereco`, `telefone`, `nome_do_produto`, `valor_unitario`, `quantidade`, `valor_total`) VALUES
-(7, 'Renata', 'Jose Jorge Salum', '11945123482', 'RENATA DA SILVA SANTOS', 'R$ 10,00', 3, 'R$ 30,00');
+INSERT INTO `pedidos` (`id`, `nome_cliente`, `endereco`, `telefone`, `id_produto`, `valor_unitario`, `quantidade`, `valor_total`) VALUES
+(7, 'Renata', 'Jose Jorge Salum', '11945123482', 5, 'R$ 10,00', 3, 'R$ 30,00');
 
+--
 -- Estrutura da tabela `produtos`
+--
 
 CREATE TABLE `produtos` (
   `id` int(5) NOT NULL,
@@ -49,7 +58,9 @@ CREATE TABLE `produtos` (
   `imagem` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
 -- Extraindo dados da tabela `produtos`
+--
 
 INSERT INTO `produtos` (`id`, `categoria`, `nome`, `descricao`, `preco`, `preco_promocao`, `imagem`) VALUES
 (1, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '9389.00', '5019.00', 'geladeira.jpg'),
@@ -69,38 +80,47 @@ INSERT INTO `produtos` (`id`, `categoria`, `nome`, `descricao`, `preco`, `preco_
 (15, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
 (16, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg');
 
+--
 -- Índices para tabelas despejadas
+--
 
+--
 -- Índices para tabela `contato`
-
+--
 ALTER TABLE `contato`
   ADD PRIMARY KEY (`id`);
 
+--
 -- Índices para tabela `pedidos`
-
+--
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id`);
 
+--
 -- Índices para tabela `produtos`
-
+--
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
+--
 -- AUTO_INCREMENT de tabelas despejadas
+--
 
+--
 -- AUTO_INCREMENT de tabela `contato`
-
+--
 ALTER TABLE `contato`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
+--
 -- AUTO_INCREMENT de tabela `pedidos`
-
+--
 ALTER TABLE `pedidos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
+--
 -- AUTO_INCREMENT de tabela `produtos`
-
+--
 ALTER TABLE `produtos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
-
