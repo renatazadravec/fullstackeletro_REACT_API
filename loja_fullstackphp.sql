@@ -4,8 +4,34 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
 -- Banco de dados: `loja_fullstackphp`
 
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(5) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nome`, `slug`) VALUES
+(1, 'Geladeiras', 'geladeiras'),
+(2, 'Fogões', 'fogoes'),
+(3, 'Microondas', 'microondas'),
+(4, 'Lava Louças', 'lava-loucas'),
+(5, 'Lavadora de Roupas', 'lavadora-de-roupas');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contato`
+--
 
 CREATE TABLE `contato` (
   `id` int(5) NOT NULL,
@@ -24,7 +50,11 @@ INSERT INTO `contato` (`id`, `nome`, `mensagem`) VALUES
 (12, '', ''),
 (13, '', '');
 
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pedidos`
+--
 
 CREATE TABLE `pedidos` (
   `id` int(5) NOT NULL,
@@ -44,13 +74,15 @@ CREATE TABLE `pedidos` (
 INSERT INTO `pedidos` (`id`, `nome_cliente`, `endereco`, `telefone`, `id_produto`, `valor_unitario`, `quantidade`, `valor_total`) VALUES
 (7, 'Renata', 'Jose Jorge Salum', '11945123482', 5, 'R$ 10,00', 3, 'R$ 30,00');
 
+-- --------------------------------------------------------
+
 --
 -- Estrutura da tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
   `id` int(5) NOT NULL,
-  `categoria` varchar(50) NOT NULL,
+  `categoria_id` int(5) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `descricao` varchar(150) NOT NULL,
   `preco` varchar(10) NOT NULL,
@@ -62,27 +94,33 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `categoria`, `nome`, `descricao`, `preco`, `preco_promocao`, `imagem`) VALUES
-(1, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '9389.00', '5019.00', 'geladeira.jpg'),
-(2, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
-(3, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
-(4, 'geladeiras', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
-(5, 'fogoes', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
-(6, 'fogoes', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
-(7, 'fogoes', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
-(8, 'microondas', 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
-(9, 'microondas', 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
-(10, 'microondas', 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
-(11, 'lavaLoucas', 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
-(12, 'lavaLoucas', 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
-(13, 'lavaLoucas', 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
-(14, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
-(15, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
-(16, 'lavadoraDeRoupas', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg');
+INSERT INTO `produtos` (`id`, `categoria_id`, `nome`, `descricao`, `preco`, `preco_promocao`, `imagem`) VALUES
+(1, 1, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '9389.00', '5019.00', 'geladeira.jpg'),
+(2, 1, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
+(3, 1, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
+(4, 1, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 'Geladeira Frost Free Brastemp Side Inverse 540 litros', '6389.00', '5019.00', 'geladeira.jpg'),
+(5, 2, 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
+(6, 2, 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
+(7, 2, 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', 'Fogão 5 Bocas Brastemp - Acendimento Automático BFS5 NCRUNA', '1599.00', '1394.00', 'fogão.jpg'),
+(8, 3, 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
+(9, 3, 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
+(10, 3, 'Microondas Philco 26L Prata PMO26ES 110V', 'Microondas Philco 26L Prata PMO26ES 110V', '699.00', '495.00', 'microondas.jpg'),
+(11, 4, 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
+(12, 4, 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
+(13, 4, 'Lava Louças PRCOP 504 - Prátika', 'Lava Louças PRCOP 504 - Prátika', '19500.00', '18430.00', 'lava-louça.jpg'),
+(14, 5, 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
+(15, 5, 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg'),
+(16, 5, 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', 'Lavadora Automatica Panasonic 12 Kg Na-F120b5g Cinza', '1700.00', '1590.00', 'lavadora.jpg');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `contato`
@@ -107,6 +145,12 @@ ALTER TABLE `produtos`
 --
 
 --
+-- AUTO_INCREMENT de tabela `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `contato`
 --
 ALTER TABLE `contato`
@@ -124,3 +168,4 @@ ALTER TABLE `pedidos`
 ALTER TABLE `produtos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
+
