@@ -5,9 +5,9 @@ class Connection
     public static function getDb()
     {
         $conn = new PDO(
-            "mysql:host=localhost;dbname=loja_fullstackphp;charset=utf8",
-            "root",
-            ""
+            "mysql:host=192.168.0.109;dbname=loja_fullstackphp;charset=utf8",
+            "renata",
+            "902590"
         );
 
         if ($conn) {
